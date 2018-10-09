@@ -1,0 +1,19 @@
+version: '2.1'
+services:
+  bandlist-mongodb:
+    build: ./mongodb
+    ports:
+      - 27017:27017
+    environment:
+      INIT_DUMP: bandlist-dump.js
+    restart: always
+    volumes:
+     - bandlist-mongodb-data:/data/db
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+volumes:
+  bandlist-mongodb-data:
+    driver: "local"

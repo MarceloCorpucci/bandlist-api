@@ -27,7 +27,7 @@ namespace '/api/v1' do
     status 201
   end
 
-  patch '/bands/:name' do |name|
+  put '/bands/:name' do |name|
     band = Band.where(name: name).first
     halt_if_not_found!
     halt 422, serialize(band) unless band.update_attributes(json_params)

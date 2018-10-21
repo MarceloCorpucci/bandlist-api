@@ -3,14 +3,15 @@ require 'mongoid'
 class Band
   include Mongoid::Document
 
-  field :name, type: String
+  field :band_name, type: String
   field :genre, type: String
   embeds_many :members
+  embeds_many :albums #, autosave: true, inverse_of: :album_id
 
-  validates :name, presence: true
+  validates :band_name, presence: true
   validates :genre, presence: true
 
-  index({ name: 'text' }, { unique: true, name: "name_index" })
+  index({ band_name: 'text' }, { unique: true, name: "band_name_index" })
 
   #scope :name, -> (name) { where(name: /^#{name}/) }
   #scope :genre, -> (genre) { where(genre: genre) }

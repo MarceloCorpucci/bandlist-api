@@ -6,9 +6,11 @@ class BandSerializer
 
   def as_json(*)
     data = {
-      name: @band.name,
+      band_name: @band.band_name,
       genre: @band.genre,
-      members: @band.members
+      members: @band.members,
+      albums: @band.albums,
+      songs: @band.albums.songs
     }
     data[:errors] = @band.errors if @band.errors.any?
     data

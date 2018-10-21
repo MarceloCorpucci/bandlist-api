@@ -1,6 +1,6 @@
 require "sinatra"
-require_relative "../models/band"
-require_relative "../serializers/band_serializer"
+require_relative "../models/album"
+require_relative "../serializers/album_serializer"
 
 helpers do
   def base_url
@@ -15,15 +15,15 @@ helpers do
     end
   end
 
-  def band
-    @band ||= Band.where(band_name: params[:band_name]).first
+  def album
+    @album ||= Album.where(album_name: params[:album_name]).first
   end
 
   def halt_if_not_found!
-    halt(404, { message: 'Band Not Found'}.to_json) unless band
+    halt(404, { message: 'Album Not Found'}.to_json) unless album
   end
 
-  def serialize(band)
-    BandSerializer.new(band).to_json
+  def serialize(album)
+    AlbumSerializer.new(album).to_json
   end
 end

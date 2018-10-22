@@ -6,7 +6,7 @@ class Band
   field :band_name, type: String
   field :genre, type: String
   embeds_many :members
-  embeds_many :albums #, autosave: true, inverse_of: :album_id
+  has_many :albums #, autosave: true, inverse_of: :album_id
 
   validates :band_name, presence: true
   validates :genre, presence: true

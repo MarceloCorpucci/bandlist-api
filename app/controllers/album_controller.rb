@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra/namespace"
+require "pry"
 require_relative "../models/album"
 require_relative "../serializers/album_serializer"
 
@@ -7,7 +8,7 @@ namespace '/api/v1' do
   get '/albums' do
     albums = Album.all
 
-    [:name, :year, :songs].each do |filter|
+    [:album_name, :year, :songs, :band].each do |filter|
       albums = albums.send(filter, params[filter]) if params[filter]
     end
 
@@ -21,6 +22,7 @@ namespace '/api/v1' do
   end
 
   post '/albums' do
+    #binding.pry
     album = Album.new(json_params)
     halt 422, serialize(album) unless album.save
     response.headers['Location'] = "#{base_url}/api/v1/albums/#{album.album_name}"

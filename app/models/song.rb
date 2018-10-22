@@ -5,11 +5,12 @@ class Song
 
   field :song_title, type: String
   field :acoustic, type: Boolean
-  embedded_in :album
+  #embedded_in :album
+  belongs_to :album, inverse_of: :song
 
   validates :song_title, presence: true
 
-  #index({ name: 'text' }, { unique: true, name: "name_index" })
+  index({ song_title: 'text' }, { unique: true, name: "song_title_index" })
 
-  #scope :name, -> (name) { where(name: /^#{name}/) }
+  scope :song_title, -> (song_title) { where(song_title: /^#{song_title}/) }
 end

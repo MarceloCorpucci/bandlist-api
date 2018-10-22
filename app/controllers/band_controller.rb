@@ -8,7 +8,7 @@ namespace '/api/v1' do
   get '/bands' do
     bands = Band.all
 
-    [:band_name, :genre, :members, :albums, :songs].each do |filter|
+    [:band_name, :genre, :members].each do |filter|
       bands = bands.send(filter, params[filter]) if params[filter]
     end
 

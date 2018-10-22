@@ -5,8 +5,8 @@ class Album
 
   field :album_name, type: String
   field :year, type: String
-  embeds_many :songs
-  embedded_in :band #, inverse_of: :album # optional: true
+  has_many :songs, inverse_of: :album
+  belongs_to :band #, inverse_of: :album # optional: true
 
   validates :album_name, presence: true
   validates :year, presence: true

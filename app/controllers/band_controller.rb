@@ -8,15 +8,16 @@ namespace '/api/v1' do
   get '/bands' do
     bands = Band.all
 
-    [:band_name, :genre, :members].each do |filter|
-      bands = bands.send(filter, params[filter]) if params[filter]
-    end
+#    [:band_name, :genre, :members, :albums].each do |filter|
+#      bands = bands.send(filter, params[filter]) if params[filter]
+#    end
 
     bands.map { |band| BandSerializer.new(band) }.to_json
   end
 
   get '/bands/:band_name' do |band_name|
     band = Band.where(band_name: band_name).first
+    binding.pry
     #halt_if_not_found!   
     serialize(band)
   end

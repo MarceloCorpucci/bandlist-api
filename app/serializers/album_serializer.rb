@@ -9,8 +9,8 @@ class AlbumSerializer
   def as_json(*)
     data = {
       album_name: @album.album_name,
-      year: @album.year,
-      songs: @album.songs
+      year: @album.year
+      #band: @album.band
     }
     #binding.pry
     data[:errors] = @album.errors if @album.errors.any?

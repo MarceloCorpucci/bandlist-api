@@ -8,7 +8,7 @@ namespace '/api/v1' do
   get '/albums' do
     albums = Album.all
 
-    [:album_name, :year, :songs, :band].each do |filter|
+    [:album_name, :year, :band].each do |filter|
       albums = albums.send(filter, params[filter]) if params[filter]
     end
 

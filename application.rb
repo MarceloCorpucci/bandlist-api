@@ -20,6 +20,7 @@ module API
     mount V1::Bands
     mount V1::Albums
     mount V1::Members
+    mount V1::Songs
   end
 end
 

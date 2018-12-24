@@ -1,4 +1,4 @@
-# app/api/v1/albums.rb
+# app/api/v1/members.rb
 module API
   module V1
     class Members < Grape::API

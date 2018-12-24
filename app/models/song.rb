@@ -2,17 +2,11 @@ require 'mongoid'
 
 class Song
   include Mongoid::Document
-  include Mongoid::Timestamps
-
+    
   field :title, type: String
-  field :role, type: String
-  field :alive, type: Boolean
+  field :order, type: Integer
 
-  belongs_to :band
+  embedded_in :album
 
-  validates :full_name, presence: true, uniqueness: true
-  validates :role, presence: true
-  validates :alive, presence: true
-
-  index({ full_name: 'text' }, { unique: true, name: "name_index" })
+  validates :title, presence: true
 end

@@ -7,6 +7,7 @@ class Album
   field :album_name, type: String
   field :year, type: String
   
+  embeds_many :songs  
   belongs_to :band
 
   validates :album_name, presence: true

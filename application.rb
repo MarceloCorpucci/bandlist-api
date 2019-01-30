@@ -6,7 +6,6 @@ Mongoid.load! "mongoid.config"
 
 Dir["#{File.dirname(__FILE__)}/app/models/**/*.rb"].each { |f| require f }
 Dir["#{File.dirname(__FILE__)}/app/api/**/*.rb"].each { |f| require f }
-#Dir["#{File.dirname(__FILE__)}/app/juanson/**/*.rb"].each { |f| require f }
 
 module API
   class Root < Grape::API
